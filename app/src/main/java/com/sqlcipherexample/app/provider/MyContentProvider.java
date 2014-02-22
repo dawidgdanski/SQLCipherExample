@@ -43,7 +43,9 @@ public class MyContentProvider extends ContentProvider {
 
     @Override
     public boolean onCreate() {
-        DatabaseHelper.getInstance(getContext());
+        Context context = getContext();
+        SQLiteDatabase.loadLibs(context);
+        DatabaseHelper.getInstance(context);
         return false;
     }
 

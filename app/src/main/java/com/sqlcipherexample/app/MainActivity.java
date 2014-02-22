@@ -99,7 +99,6 @@ public class MainActivity extends ActionBarActivity implements LoaderManager.Loa
     }
 
     private void onFirstLaunch() {
-        SQLiteDatabase.loadLibs(this);
         setDatabaseKeyIfNotSet();
     }
 
