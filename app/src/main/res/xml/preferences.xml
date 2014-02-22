@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+    <PreferenceCategory android:title="@string/database">
+        <com.sqlcipherexample.app.preferences.PassphraseDialogPreference
+                    android:key="@string/change_passphrase_key"
+                    android:title="@string/change_passphrase"
+                    android:summary="@string/change_passphrase_summary"
+                    android:dialogTitle="@string/change_passphrase"
+                    android:dialogLayout="@layout/passphrase_dialog_preference"
+                    android:positiveButtonText="@string/apply"
+                    android:negativeButtonText="@string/cancel"/>
+    </PreferenceCategory>
+</PreferenceScreen>

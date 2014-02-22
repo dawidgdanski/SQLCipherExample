@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.sqlcipherexample.app" >
+
+    <uses-sdk
+        android:minSdkVersion="11"
+        android:targetSdkVersion="16" />
+
+    <application
+        android:icon="@drawable/ic_launcher"
+        android:label="@string/app_name"
+        android:theme="@style/AppTheme"
+        android:uiOptions="splitActionBarWhenNarrow"
+        android:name=".App">
+
+        <activity
+            android:name="com.sqlcipherexample.app.MainActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        <activity android:name=".preferences.SettingsActivity"/>
+
+        <provider android:authorities="com.sqlcipherexample.app.provider.MyContentProvider"
+                  android:name=".provider.MyContentProvider"
+                  android:exported="true"/>
+
+    </application>
+
+</manifest>
