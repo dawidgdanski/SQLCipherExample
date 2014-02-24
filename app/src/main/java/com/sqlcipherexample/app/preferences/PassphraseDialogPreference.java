@@ -43,12 +43,6 @@ public class PassphraseDialogPreference extends DialogPreference {
         if(positiveResult) {
             onDatabasePassphraseChange(mCurrentPasswordText.getText().toString(),
                                        mNextPasswordText.getText().toString());
-            SettingsActivity activity = (SettingsActivity) getContext();
-            Intent intent = activity.getIntent();
-            intent.putExtra(DatabaseHelper.DATABASE_MODIFIED, true);
-            activity.setResult(Activity.RESULT_OK, intent);
-        } else {
-            ((SettingsActivity) getContext()).setResult(Activity.RESULT_CANCELED);
         }
     }
 

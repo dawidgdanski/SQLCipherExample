@@ -31,8 +31,6 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         };
     }
 
-    public static final String DATABASE_MODIFIED = "database conf was modified";
-
     private static DatabaseHelper sDatabaseHelperInstance;
 
     private final Context mContext;

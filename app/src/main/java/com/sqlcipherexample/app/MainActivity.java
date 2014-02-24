@@ -9,7 +9,7 @@ import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
-import com.sqlcipherexample.app.database.DatabaseHelper;
+
 import com.sqlcipherexample.app.model.contract.ProductsContract;
 import com.sqlcipherexample.app.preferences.MySecurePreferences;
 import com.sqlcipherexample.app.preferences.SettingsActivity;
@@ -18,8 +18,6 @@ import com.sqlcipherexample.app.ui.MainFragmentAdapter;
 import com.sqlcipherexample.app.ui.ProductsListFragment;
 
 public class MainActivity extends ActionBarActivity implements ViewPager.OnPageChangeListener {
-
-    private final int ACTIVITY_RESULT_SETTINGS_REQUEST_CODE = 1;
 
     private final String CURRENT_FRAGMENT = "current fragment";
 
@@ -59,22 +57,11 @@ public class MainActivity extends ActionBarActivity implements ViewPager.OnPageC
     public boolean onOptionsItemSelected(MenuItem item) {
         switch(item.getItemId()) {
             case R.id.action_settings:
-                startActivityForResult(new Intent(this, SettingsActivity.class), ACTIVITY_RESULT_SETTINGS_REQUEST_CODE);
+                startActivity(new Intent(this, SettingsActivity.class));
                 return true;
 
             default:
                 return super.onOptionsItemSelected(item);
-        }
-    }
-
-    @Override
-    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
-
-        if(resultCode == RESULT_OK) {
-            if(requestCode == ACTIVITY_RESULT_SETTINGS_REQUEST_CODE && data.hasExtra(DatabaseHelper.DATABASE_MODIFIED)) {
-
-            }
         }
     }
 
