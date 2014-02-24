@@ -14,5 +14,6 @@
     <string name="add_product">Add product</string>
     <string name="product_name">Product name</string>
     <string name="password_changed">password_changed</string>
+    <string name="no_products">No products</string>
 
 </resources>

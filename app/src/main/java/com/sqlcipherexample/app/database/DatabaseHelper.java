@@ -46,7 +46,6 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
     public static synchronized DatabaseHelper getInstance(final Context context) {
         if(sDatabaseHelperInstance == null) {
-            SQLiteDatabase.loadLibs(context);
             sDatabaseHelperInstance = new DatabaseHelper(context);
         }
 
@@ -155,10 +154,8 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     }
 
     public static void changePassphrase(final String currentPassword, final String newPassword, final Context context) {
-        final File databaseFile = context.getDatabasePath(ENCRYPTED_DATABASE_NAME);
-        final SQLiteDatabase database = SQLiteDatabase.openOrCreateDatabase(databaseFile,
-                                                                            currentPassword,
-                                                                            null);
+        SQLiteDatabase database = DatabaseHelper.getInstance(context).getWritableDatabase(currentPassword);
         database.execSQL(String.format("PRAGMA rekey = '%s'", newPassword));
+        database.close();
     }
 }

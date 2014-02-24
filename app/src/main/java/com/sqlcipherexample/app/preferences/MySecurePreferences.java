@@ -43,7 +43,7 @@ public final class MySecurePreferences {
         return mSharedPreferences.contains(key);
     }
 
-    public boolean containsDatabaseAccessKey() {
+    public boolean isContainsDatabaseAccessKey() {
         return containsKey(KEY_TAG);
     }
 

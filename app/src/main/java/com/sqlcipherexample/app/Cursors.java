@@ -10,7 +10,15 @@ public final class Cursors {
         return cursor == null ? new EmptyCursor() : cursor;
     }
 
-    private static class EmptyCursor extends MatrixCursor {
+    public static EmptyCursor newEmptyCursor() {
+        return new EmptyCursor();
+    }
+
+    public static boolean isEmpty(final Cursor cursor) {
+        return cursor.getCount() == 0;
+    }
+
+    public static class EmptyCursor extends MatrixCursor {
 
         public EmptyCursor() {
             super(new String[]{}, 1);
@@ -25,6 +33,8 @@ public final class Cursors {
         public int getColumnIndex(String columnName) {
             return -1;
         }
+
+
     }
 
 }
