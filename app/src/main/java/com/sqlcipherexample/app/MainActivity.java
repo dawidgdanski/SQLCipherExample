@@ -15,7 +15,6 @@ import com.sqlcipherexample.app.preferences.MySecurePreferences;
 import com.sqlcipherexample.app.preferences.SettingsActivity;
 import com.sqlcipherexample.app.provider.MyContentProvider;
 import com.sqlcipherexample.app.ui.MainFragmentAdapter;
-import com.sqlcipherexample.app.ui.NonConfigurable;
 import com.sqlcipherexample.app.ui.ProductsListFragment;
 
 public class MainActivity extends ActionBarActivity implements ViewPager.OnPageChangeListener {
