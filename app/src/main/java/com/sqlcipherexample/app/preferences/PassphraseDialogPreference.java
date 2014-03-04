@@ -41,12 +41,16 @@ public class PassphraseDialogPreference extends DialogPreference {
         super.onDialogClosed(positiveResult);
 
         if(positiveResult) {
-            onDatabasePassphraseChange(mCurrentPasswordText.getText().toString(),
-                                       mNextPasswordText.getText().toString());
+            boolean databasePasswordChanged = onDatabasePassphraseChange(mCurrentPasswordText.getText().toString(),
+                                                                         mNextPasswordText.getText().toString());
+            if(databasePasswordChanged) {
+                System.exit(0); //Hardcoded here with System.exit(0) because MainActivity contains FragmentPagerAdapter loaded with ProductsListFragment operating on opened cursor
+                            //In your application, please make sure to have all of your cursors closed before making any changes on SQLCipherDatabase
+            }
         }
     }
 
-    private void onDatabasePassphraseChange(final String currentPassword, final String newPassword) {
+    private boolean onDatabasePassphraseChange(final String currentPassword, final String newPassword) {
         Context context = getContext();
         try {
             DatabaseHelper.changePassphrase(currentPassword, newPassword, context);
@@ -56,8 +60,10 @@ public class PassphraseDialogPreference extends DialogPreference {
                                               MyContentProvider.SET_KEY_METHOD,
                                               newPassword,
                                               Bundle.EMPTY);
+            return true;
         } catch(Exception e) {
             Toast.makeText(context, e.getMessage(), Toast.LENGTH_LONG).show();
+            return false;
         }
     }
 }

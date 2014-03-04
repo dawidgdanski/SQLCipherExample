@@ -152,7 +152,10 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     }
 
     public static void changePassphrase(final String currentPassword, final String newPassword, final Context context) {
-        SQLiteDatabase database = DatabaseHelper.getInstance(context).getWritableDatabase(currentPassword);
+        final File databaseFile = context.getDatabasePath(ENCRYPTED_DATABASE_NAME);
+        final SQLiteDatabase database = SQLiteDatabase.openOrCreateDatabase(databaseFile,
+                currentPassword,
+                null);
         database.execSQL(String.format("PRAGMA rekey = '%s'", newPassword));
         database.close();
     }
